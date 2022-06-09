@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3307:3306
+
+  app:
+    image: app:latest
+    ports:
+       - 8091:8091
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/database?autoReconnect=true&useSSL=false
+    depends_on:
+       - mysqldb

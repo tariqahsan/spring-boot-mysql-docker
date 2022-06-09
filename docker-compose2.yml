@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  mysql-standalone:
+    image: mysql
+    container_name: mysql-standalone
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: sa
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - testData:/var/lib/mysql
+    networks:
+      - backendNetwork
+  users-mysql:
+    image: openjdk:8
+    container_name: users-mysql
+    ports:
+      - 8086:8086
+    depends_on:
+      - mysql-standalone
+    volumes:
+      - ./spring-boot-restapi-mysql-master/target/users-mysql.jar:/users-mysql.jar
+    command: ["java", "-jar", "users-mysql.jar"]
+    networks:
+      - backendNetwork
+      - frontendNetwork
+  angular-material:
+    image: nginx:alpine
+    container_name: angular-material
+    ports: 
+      - 4200:80
+    depends_on:
+      - users-mysql
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./angular-material/dist/angular-material/:/usr/share/nginx/html
+    networks:
+      - frontendNetwork
+volumes:
+  testData:
+  
+networks:
+  backendNetwork:
+  frontendNetwork:

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=mma123
+      - MYSQL_DATABASE=mma
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=mma123
+      - MYSQL_HOST=mysqldb
+      - MYSQL_PORT=3306
+    ports:
+      - 3307:3306
+
+  springboot-app:
+    image: springboot-app:latest
+    ports:
+       - 9090:9999
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/mma?autoReconnect=true&useSSL=false
+    depends_on:
+       - mysqldb

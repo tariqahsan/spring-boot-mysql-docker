@@ -1,0 +1,6 @@
+INSERT INTO `mmadb`.`users` (`id`, `address`, `email`, `first_name`, `last_name`, `phone_number`) VALUES (100, '100 main st., fairfax, va 22030', 'sayeed@gmail.com', 'Mohammad', 'Sayeed', '111-555-1111');
+INSERT INTO `mmadb`.`users` (`id`, `address`, `email`, `first_name`, `last_name`, `phone_number`) VALUES (200, '200 main st., fairfax, va 22030', 'akbar@gmail.com', 'Akbar', 'Ali', '333-111-1111');
+INSERT INTO `mmadb`.`users` (`id`, `address`, `email`, `first_name`, `last_name`, `phone_number`) VALUES (300, '300 main st., fairfax, va 22030', 'ahmed@gmail.com', 'Mohammad', 'Ahmed', '111-111-9999');
+INSERT INTO `mmadb`.`users` (`id`, `address`, `email`, `first_name`, `last_name`, `phone_number`) VALUES (400, '400 main st., chantilly, va 22030', 'qureshi@gmail.com', 'Nabila', 'Qureshi', '111-111-7777');
+INSERT INTO `mmadb`.`users` (`id`, `address`, `email`, `first_name`, `last_name`, `phone_number`) VALUES (500, '500 main st., springfield, va 22030', 'hassan@gmail.com', 'Shahin', 'hassan', '111-444-1111');
+INSERT INTO `mmadb`.`users` (`id`, `address`, `email`, `first_name`, `last_name`, `phone_number`) VALUES (600, '600 main st., woodbridge, va 22191', 'hossain@gmail.com', 'Farukh', 'Hossain', '999-111-1111');
