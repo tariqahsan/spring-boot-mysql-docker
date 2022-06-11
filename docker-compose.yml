@@ -7,6 +7,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=mma123
       - MYSQL_DATABASE=mma
+    ports:
+      - 3307:3306
   springboot-app:
     #Build the image using the docker file which is in the current folder
     build: .
