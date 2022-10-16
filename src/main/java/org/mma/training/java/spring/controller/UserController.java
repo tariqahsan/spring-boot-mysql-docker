@@ -1,10 +1,10 @@
-package org.mma.training.java.springboot.docker.controller;
+package org.mma.training.java.spring.controller;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.mma.training.java.springboot.docker.model.User;
-import org.mma.training.java.springboot.docker.repository.UserRepository;
+import org.mma.training.java.spring.model.User;
+import org.mma.training.java.spring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

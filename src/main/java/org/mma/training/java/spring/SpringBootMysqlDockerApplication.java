@@ -1,4 +1,4 @@
-package org.mma.training.java.springboot.docker;
+package org.mma.training.java.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

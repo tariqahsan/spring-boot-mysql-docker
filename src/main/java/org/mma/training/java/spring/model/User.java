@@ -1,4 +1,4 @@
-package org.mma.training.java.springboot.docker.model;
+package org.mma.training.java.spring.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
