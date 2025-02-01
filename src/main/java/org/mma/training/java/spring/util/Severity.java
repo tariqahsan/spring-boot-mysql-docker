@@ -1,6 +1,6 @@
 package org.mma.training.java.spring.util;
 
-import javax.validation.Payload;
+import jakarta.validation.Payload;
 import org.apache.commons.lang3.Validate;
 
 
