@@ -44,7 +44,7 @@ public class DoeMetadata implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="doe_id")
-	private int doeId;
+	private long doeId;
 
 	@Lob
 	@Column(name="additional_information")
@@ -601,7 +601,7 @@ public class DoeMetadata implements Serializable {
 
 
 
-	public int getDoeId() {
+	public long getDoeId() {
 
 		return this.doeId;
 
@@ -609,7 +609,7 @@ public class DoeMetadata implements Serializable {
 
 
 
-	public void setDoeId(int doeId) {
+	public void setDoeId(long doeId) {
 
 		this.doeId = doeId;
 
