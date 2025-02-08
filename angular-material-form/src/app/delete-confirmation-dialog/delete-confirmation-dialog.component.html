@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Confirm Delete</h1>
+<div mat-dialog-content>
+  Are you sure you want to delete the entry for <b>{{data.firstName}} {{data.lastName}} </b>?
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="warn" (click)="onConfirmClick()">Delete</button>
+</div>

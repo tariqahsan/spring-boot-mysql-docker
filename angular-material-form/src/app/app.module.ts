@@ -17,12 +17,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { provideHttpClient } from '@angular/common/http';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UpdateUserDialogComponent } from './update-user-dialog/update-user-dialog.component';
+import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { UserFormComponent } from './user-form/user-form.component';
     ContactFormComponent,
     FooterComponent,
     HeaderComponent,
-    UserFormComponent
+    UserFormComponent,
+    UpdateUserDialogComponent,
+    DeleteConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,9 @@ import { UserFormComponent } from './user-form/user-form.component';
     MatPaginator,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [
     provideAnimationsAsync(), provideHttpClient()

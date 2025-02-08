@@ -40,7 +40,7 @@
             <mat-error *ngIf="userForm.get('phone')?.hasError('required') && userForm.get('phone')?.touched">
               Phone number is required.
             </mat-error>
-            <mat-error *ngIf="userForm.get('email')?.hasError('phone') && userForm.get('phone')?.touched">
+            <mat-error *ngIf="userForm.get('phone')?.hasError('phone') && userForm.get('phone')?.touched">
               Please enter a valid phone number.
             </mat-error>
           </mat-form-field>
@@ -112,6 +112,19 @@
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
           <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="openUpdateDialog(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="openDeleteDialog(row)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

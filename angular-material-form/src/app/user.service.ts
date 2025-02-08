@@ -11,28 +11,28 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  // Get all contacts
+  // Get all users
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/all`);
   }
 
-  // Get contact by ID
+  // Get user by ID
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
 
-  // Create a new contact
-  createUser(contact: User): Observable<User> {
+  // Create a new user
+  createUser(user: User): Observable<User> {
     console.log("IN ADD ...")
-    return this.http.post<User>(`${this.apiUrl}/add`, contact);
+    return this.http.post<User>(`${this.apiUrl}/add`, user);
   }
 
-  // Update an existing contact
-  updateUser(id: number, contact: User): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/${id}`, contact);
+  // Update an existing user
+  updateUser(id: number, user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${id}`, user);
   }
 
-  // Delete a contact
+  // Delete a user
   deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

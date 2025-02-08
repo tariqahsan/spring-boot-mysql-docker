@@ -5,6 +5,9 @@ import { User } from '../user.model'; // Adjust path as necessary
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateUserDialogComponent } from '../update-user-dialog/update-user-dialog.component';
+import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @Component({
   selector: 'app-user-form',
@@ -14,13 +17,13 @@ import { MatTableDataSource } from '@angular/material/table';
 export class UserFormComponent implements OnInit, AfterViewInit {
   userForm!: FormGroup;
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'address', 'phone', 'email'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'address', 'phone', 'email', 'actions'];
   dataSource: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private dialog: MatDialog) {
     this.dataSource = new MatTableDataSource<User>([]);
   }
 
@@ -76,6 +79,50 @@ export class UserFormComponent implements OnInit, AfterViewInit {
         }
       );
     }
+  }
+
+  openUpdateDialog(row: User): void {
+    const dialogRef = this.dialog.open(UpdateUserDialogComponent, {
+      width: '400px',
+      data: { ...row }  // Pass a copy of the row data
+    });
+
+    dialogRef.afterClosed().subscribe(updatedUser => {
+      if (updatedUser) {
+        this.userService.updateUser(updatedUser.id, updatedUser).subscribe(
+          () => {
+            this.loadUsers(); // Refresh the table
+            console.log('User updated successfully');
+          },
+          error => {
+            console.error('Error updating user:', error);
+          }
+        );
+      }
+    });
+  }
+
+  openDeleteDialog(row: User): void {
+    const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
+      width: '300px',
+      data: { ...row } // Pass a copy of the row data
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        if (row.id !== undefined) { // Add this check
+          this.userService.deleteUser(row.id).subscribe(
+            () => {
+              this.loadUsers(); // Refresh the table
+              console.log('User deleted successfully');
+            },
+            error => {
+              console.error('Error deleting user:', error);
+            }
+          );
+        }
+      }
+    });
   }
 }
 

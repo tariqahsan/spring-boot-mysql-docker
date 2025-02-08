@@ -6,7 +6,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 const routes: Routes = [
   { path: 'contact', component: ContactFormComponent }, // Define route for contact form
   { path: 'user', component: UserFormComponent}, // Define route for user form
-  { path: '', redirectTo: '/contact', pathMatch: 'full' }, // Redirect to contact form on empty path
+  { path: '', redirectTo: '/user', pathMatch: 'full' }, // Redirect to contact form on empty path
   // Add more routes here as needed
 ];
 

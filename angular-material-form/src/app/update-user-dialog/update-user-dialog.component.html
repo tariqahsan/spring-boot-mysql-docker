@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Update User</h1>
+<div mat-dialog-content>
+  <form [formGroup]="updateForm">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" required>
+      <mat-error *ngIf="updateForm.get('firstName')?.hasError('required')">First Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" required>
+      <mat-error *ngIf="updateForm.get('lastName')?.hasError('required')">Last Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" required>
+      <mat-error *ngIf="updateForm.get('address')?.hasError('required')">Address is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" required>
+      <mat-error *ngIf="updateForm.get('phone')?.hasError('required')">Address is required</mat-error>
+      <mat-error *ngIf="updateForm.get('phone')?.hasError('phone')">Invalid phone number</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" required>
+      <mat-error *ngIf="updateForm.get('email')?.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="updateForm.get('email')?.hasError('email')">Invalid email format</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onUpdateClick()" [disabled]="updateForm.invalid">Update</button>
+</div>
+
