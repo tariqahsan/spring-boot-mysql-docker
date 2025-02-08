@@ -52,6 +52,14 @@ public class UserController {
 			
 		} 
 	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long userId, @RequestBody User userObj) {
+		Optional<User> user = userRepository.findById(userId);	
+		BeanUtils.copyProperties(userObj, user.get());
+		final User updatedUser = userRepository.save(user.get());
+		return ResponseEntity.ok(updatedUser);
+	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<User> deleteUser(@PathVariable("id") long userId) {
